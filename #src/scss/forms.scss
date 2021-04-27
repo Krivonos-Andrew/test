@@ -1,0 +1,479 @@
+//<FORM ()>====================================================================================================
+.form {
+
+	&__title {
+		font-size: 56px;
+		font-weight: 400;
+		line-height: 50px;
+		padding-top: 70px;
+
+		@media (max-width: $md1+px) {
+			font-size: calc(32px + (56 - 32) * ((100vw - 375px) / (#{$md1} - 375)));
+			padding-top: calc(40px + (70 - 40) * ((100vw - 375px) / (#{$md1} - 375)));
+
+		}
+
+	}
+
+	&__subtitle {
+		width: 728px;
+		padding-top: 40px;
+
+		@media (max-width: $md1+px) {
+			font-size: calc(20px + (24 - 20) * ((100vw - 375px) / (#{$md1} - 375)));
+		}
+
+	}
+
+	&__line {
+		max-width: 728px;
+
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__box {
+		display: flex;
+		width: 356px;
+		align-items: center;
+		justify-content: space-between;
+
+		&--temp {
+			display: none;
+
+		}
+
+		&--temp-active {
+			display: block;
+
+		}
+	}
+
+	&__line--short {
+		width: 172px;
+		display: inline-block;
+	}
+
+	&__line--shorttext {
+		display: inline-block;
+		max-width: 172px;
+
+	}
+
+	&__line--long {
+		max-width: 356px;
+	}
+
+	&__line--comment {
+
+		padding-bottom: 40px;
+		display: flex;
+		flex-direction: column;
+
+		textarea {
+			padding: 10px 20px;
+			max-width: 728px;
+			min-height: 80px;
+			max-height: 200px;
+		}
+	}
+
+	&__label {
+		display: inline-block;
+		padding-bottom: 8px;
+		padding-top: 16px;
+		font-size: 13px;
+	}
+
+	&__temp {
+		width: 100%;
+		padding-top: 20px;
+		display: flex;
+		align-items: center;
+	}
+
+	&__info {
+		width: 356px;
+		height: 102px;
+		padding: 24px;
+		position: absolute;
+		top: 152px;
+		right: 0;
+		background-color: #4B4B4F;
+		line-height: 18px;
+
+		@media (max-width: $md1+px) {
+			position: static;
+
+		}
+
+	}
+
+	&__error {}
+}
+
+.temp {
+
+	&__check {
+		position: absolute;
+		opacity: 0;
+		visibility: hidden;
+
+	}
+
+	&__check+label {
+		display: inline-flex;
+		align-items: center;
+		user-select: none;
+		cursor: pointer;
+	}
+
+	&__check+label::before {
+		margin-right: 12px;
+		content: "";
+		display: inline-block;
+		width: 24px;
+		height: 24px;
+		flex-shrink: 0;
+		flex-grow: 0;
+		border: 2px solid;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 50% 50%;
+	}
+
+	&__check:checked+label::before {
+		border: none;
+		background-color: #EF483E;
+		background-image: url(../img/icons/check.svg);
+
+	}
+
+}
+
+.form__sel {
+	color: #77243a;
+}
+
+.subtitle {
+	font-size: 24px;
+	font-weight: 400;
+	display: flex;
+	align-items: center;
+
+	&__number {
+		background-color: #F14138;
+		width: 24px;
+		height: 24px;
+		font-size: 16px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__item {
+		padding-left: 8px;
+
+	}
+}
+
+
+//</FORM>====================================================================================================
+
+//<SELECT (sel+tab)>====================================================================================================
+.select {
+	position: relative;
+
+	// .select__item
+	&__item {
+		position: relative;
+	}
+
+	// .select__title
+	&__title {
+		color: #000;
+		background-color: #fff;
+		cursor: pointer;
+
+
+
+
+
+		&._ative {
+			// &::before {
+			// 	transform: rotate(180deg);
+			// }
+
+
+		}
+
+		@media (max-width: $md2+px) {
+			font-size: 18px;
+
+		}
+	}
+
+	// .select__value
+	&__value {
+		display: flex;
+		font-size: 15px;
+		height: 44px;
+		padding: 0px 15px;
+		align-items: center;
+		justify-content: space-between;
+		flex-direction: row-reverse;
+
+		span {
+			height: 1em;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+		}
+
+		&:before {
+			content: "";
+			display: inline-block;
+			transition: all 0.3s ease 0s;
+			width: 24px;
+			height: 24px;
+			background: url(../img/icons/Dropdown.svg) center / 100% no-repeat;
+		}
+	}
+
+	&__input {
+		width: 100%;
+		background-color: transparent;
+		height: 100%;
+	}
+
+	// .select__options
+	&__options {
+		color: #000;
+		display: none;
+		position: absolute;
+		top: 29px;
+		min-width: 100%;
+		left: 0;
+		background-color: #fff;
+		font-size: 14px;
+		padding: 10px 0px 5px 0px;
+
+		@media (max-width: $md2+px) {
+			font-size: 18px;
+		}
+	}
+
+	// .select__option
+	&__option {
+
+		cursor: pointer;
+		padding: 5px 15px;
+		margin: 0px 0px 0px 0px;
+
+		@media (min-width: 992px) {
+			&:hover {
+				background: #EF483E;
+				color: #FFFFFF;
+			}
+		}
+	}
+
+	&._active {
+		z-index: 5;
+
+		.select__value {
+			&:before {
+				transform: rotate(-180deg);
+			}
+		}
+
+		.select__options {
+			display: block;
+		}
+	}
+}
+
+//</SELECT>====================================================================================================
+
+//<INPUT (inp+tab)>====================================================================================================
+input[type="text"],
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+
+
+.input {
+	border-radius: 0 !important;
+	width: 100%;
+	display: block;
+	padding: 0px 20px;
+	height: 44px;
+	font-size: 15px;
+
+	&._focus {
+		background-color: rgb(237, 237, 243);
+	}
+
+	&:hover {
+		border: 3px solid yellow;
+	}
+
+	&._error {}
+}
+
+textarea.input {
+	resize: none;
+	padding: 0px 0px;
+
+}
+
+//</INPUT>====================================================================================================
+
+
+//</CHECK>====================================================================================================
+
+//<OPTIONS (opt+tab)>====================================================================================================
+.options {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	// .options__item
+	&__item {
+		position: relative;
+		cursor: pointer;
+
+		&._error {}
+	}
+
+	// .options__input
+	&__input {
+		position: absolute;
+		width: 0;
+		height: 0;
+		opacity: 0;
+		left: 0;
+		top: 0;
+		visibility: hidden;
+
+		&:checked+.options__text:before {}
+
+		&:checked+.options__text:after {
+			transform: scale(1);
+		}
+	}
+
+	// .options__text
+	&__text {
+		display: inline-flex;
+		align-items: center;
+		position: relative;
+		font-size: 16px;
+		color: #ffffff;
+		letter-spacing: -0.3px;
+		line-height: calc(20 / 16);
+
+		&:before {
+			content: "";
+			align-self: flex-start;
+			margin: 0px 14px 0px 0px;
+			flex: 0 0 20px;
+			left: 0;
+			top: 0;
+			border-radius: 50%;
+			width: 20px;
+			height: 18px;
+			background: #fff;
+			border: 1px solid #a7a9ac;
+		}
+
+		&:after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			transform: scale(0);
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background-color: #77243a;
+			position: absolute;
+			left: 5px;
+			top: 4px;
+		}
+	}
+}
+
+//</OPTIONS>====================================================================================================
+
+
+
+//<QUANTITY>====================================================================================================
+.quantity {
+	width: 88px;
+	height: 40px;
+	display: flex;
+	border: 1px solid rgba(166, 166, 166, 0.45);
+
+	// .quantity__button
+	&__button {
+		flex: 0 0 30px;
+		position: relative;
+		cursor: pointer;
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transition: all 0.3s ease 0s;
+			margin: 0px 0px 0px -4.5px;
+			background-color: #a6a6a6;
+			width: 9px;
+			height: 1px;
+		}
+
+		@media (min-width: $md2+px) {
+			&:hover {
+
+				&::before,
+				&::after {
+					background-color: rgba(0, 0, 0, 0.5);
+				}
+			}
+		}
+
+		// .quantity__button_plus
+		&_plus {
+			&::before {
+				transform: rotate(-90deg);
+			}
+		}
+
+		// .quantity__button_minus
+		&_minus {}
+	}
+
+	// .quantity__input
+	&__input {
+		flex: 1 1 auto;
+
+		input {
+			height: 100%;
+			color: #a6a6a6;
+			font-size: 12px;
+			width: 100%;
+			text-align: center;
+		}
+	}
+}
+
+//</QUANTITY>====================================================================================================
+
+//<RANGE>====================================================================================================
+
+//</RANGE>====================================================================================================
